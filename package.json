@@ -1,7 +1,7 @@
 {
     "name": "teacode-vsc-helper",
     "displayName": "TeaCode VSC Helper",
-    "description": "Provides integration with TeaCode http://apptorium.com/teacode",\
+    "description": "Provides integration with TeaCode http://apptorium.com/teacode",
     "icon": "images/TeaCode Icon.png",
     "version": "1.0.0",
     "publisher": "Apptorium",
