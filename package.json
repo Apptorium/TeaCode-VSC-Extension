@@ -29,7 +29,7 @@
         "keybindings": [
             {
                 "command": "extension.expand",
-                "key": "cmd+shift+E",
+                "key": "cmd+ctrl+E",
                 "when": "editorTextFocus"
             }
         ]
