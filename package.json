@@ -4,6 +4,10 @@
     "description": "Provides integration with TeaCode http://apptorium.com/teacode",
     "version": "1.0.0",
     "publisher": "Apptorium",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Apptorium/TeaCode-VSC-Extension"
+    },
     "engines": {
         "vscode": "^1.20.0"
     },
