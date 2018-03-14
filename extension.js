@@ -18,7 +18,7 @@ function setCursorPosition(position) {
 
 function newPositionForText(currentPosition, text, numberOfCharacters) {
     var newPosition = currentPosition;
-  
+
     for (let i = 0, end = text.length-1, asc = 0 <= end; asc ? i <= end : i >= end; asc ? i++ : i--) {
       if (i === numberOfCharacters) {
         break;
@@ -57,12 +57,10 @@ function getTextFromBeginningOfLineToCursor() {
 
 function replaceText(text, cursorPosition) {
     const editor = vscode.window.activeTextEditor;
-    var currentCursorPosition = getCursorPosition();
+    var currentCursorPosition = new vscode.Position(getCursorPosition().line, 0);
     editor.edit(builder => {
         const range = getTextRangeFromBeginningOfLineToCursor();
-
         builder.delete(range);
-        currentCursorPosition = getCursorPosition();
         builder.insert(currentCursorPosition, text);
     });
 
@@ -89,6 +87,7 @@ function executeCommand(command) {
     const { exec } = require('child_process');
     return exec(command, function(error, stdout, stderr) {
         if (stdout) {
+            console.log(stdout);
             handleJson(stdout);
         }
         if (stderr) {
@@ -112,7 +111,6 @@ function runScript() {
   }
 
 function activate(context) {
-
     let disposable = vscode.commands.registerCommand('extension.expand', function () {
         runScript();
     });
