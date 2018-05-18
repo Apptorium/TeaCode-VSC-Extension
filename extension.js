@@ -87,13 +87,16 @@ function executeCommand(command) {
     const { exec } = require('child_process');
     return exec(command, function(error, stdout, stderr) {
         if (stdout) {
-            console.log(stdout);
             handleJson(stdout);
         }
         if (stderr) {
             vscode.window.showInformationMessage("Could not run TeaCode. Please make sure it's installed. You can download the app from www.apptorium.com/teacode");
         }
     });
+}
+
+function escapeString(string) {
+    return string.replace(/[\"\\]/g, "\\$&");
 }
 
 function runScript() {
@@ -106,7 +109,7 @@ function runScript() {
       return;
     }
 
-    const command = `sh ${scriptPath} -e \"${fileExtension}\" -t \"${text}\"`;
+    const command = `sh ${scriptPath} -e \"${escapeString(fileExtension)}\" -t \"${escapeString(text)}\"`;
     executeCommand(command)
   }
 

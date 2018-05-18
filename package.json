@@ -3,7 +3,7 @@
     "displayName": "TeaCode VSC Helper",
     "description": "Provides integration with TeaCode http://apptorium.com/teacode",
     "icon": "images/TeaCode-Icon.png",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "publisher": "Apptorium",
     "repository": {
         "type": "git",
