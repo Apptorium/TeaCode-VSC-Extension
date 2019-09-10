@@ -1,17 +1,17 @@
 {
-    "name": "teacode-vsc-helper",
-    "displayName": "TeaCode VSC Helper",
-    "description": "Provides integration with TeaCode http://apptorium.com/teacode",
-    "icon": "images/TeaCode-Icon.png",
-    "version": "1.1.2",
-    "publisher": "Apptorium",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Apptorium/TeaCode-VSC-Extension"
+	"name": "teacode-vsc-helper",
+	"displayName": "TeaCode VSC Helper",
+	"description": "Provides integration with TeaCode http://apptorium.com/teacode",
+	"icon": "images/TeaCode-Icon.png",
+	"version": "1.1.4",
+	"publisher": "Apptorium",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Apptorium/TeaCode-VSC-Extension"
 	},
 	"engines": {
-        "vscode": "^1.38.0"
-    },
+		"vscode": "^1.38.0"
+	},
 	"categories": [
 		"Other"
 	],
@@ -26,7 +26,7 @@
 				"title": "Expand with TeaCode"
 			}
 		],
-		"keybindings":[
+		"keybindings": [
 			{
 				"command": "extension.expand",
 				"key": "cmd+ctrl+E",
