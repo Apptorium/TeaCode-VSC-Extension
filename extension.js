@@ -20,15 +20,14 @@ function newPositionForText(currentPosition, text, numberOfCharacters) {
     var newPosition = currentPosition;
 
     for (let i = 0, end = text.length-1, asc = 0 <= end; asc ? i <= end : i >= end; asc ? i++ : i--) {
-      if (i === numberOfCharacters) {
+      if (i == numberOfCharacters) {
         break;
       }
-      if (text[i] === "\n") {
+      if (text[i] == "\n") {
         newPosition = new vscode.Position(newPosition.line + 1, 0);
       } else {
         newPosition = new vscode.Position(newPosition.line, newPosition.character + 1);
       }
-
     }
 
     return newPosition;
@@ -58,10 +57,11 @@ function getTextFromBeginningOfLineToCursor() {
 function replaceText(text, cursorPosition) {
     const editor = vscode.window.activeTextEditor;
     var currentCursorPosition = new vscode.Position(getCursorPosition().line, 0);
+
     editor.edit(builder => {
         const range = getTextRangeFromBeginningOfLineToCursor();
         builder.delete(range);
-        builder.insert(currentCursorPosition, text);
+        builder.insert(range.start, text);
     });
 
     const newPosition = newPositionForText(currentCursorPosition, text, cursorPosition);
@@ -89,7 +89,7 @@ function executeCommand(command) {
         if (stdout) {
             handleJson(stdout);
         }
-        if (stderr) {
+        if (error) {
             vscode.window.showInformationMessage("Could not run TeaCode. Please make sure it's installed. You can download the app from www.apptorium.com/teacode");
         }
     });
@@ -104,12 +104,11 @@ function runScript() {
     const scriptPath = extensionPath + "/expand.sh";
     const fileExtension = getCurrentFilename().split('.').pop();
     const text = getTextFromBeginningOfLineToCursor();
-
     if ((text === null) || (text === "")) {
       return;
     }
 
-    const command = `sh ${scriptPath} -e \"${escapeString(fileExtension)}\" -t \"${escapeString(text)}\"`;
+    const command = `osascript -l JavaScript -e "Application(\\"TeaCode\\").expandAsJson(\\"${escapeString(text)}\\", { \\"extension\\": \\"${escapeString(fileExtension)}\\" })"`;
     executeCommand(command)
   }
 

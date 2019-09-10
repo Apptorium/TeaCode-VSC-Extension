@@ -30,4 +30,4 @@ if [ -z "$TEXT" ]; then
 	exit
 fi
 
-osascript -l JavaScript -e "Application(\"TeaCode\").expandAsJson(\"$TEXT\", { \"extension\": \"$FILE_EXTENSION\" })"
+osascript -l JavaScript -e "Application(\"TeaCode\").expandAsJson(\"$TEXT\", { \"extension\"\: "$FILE_EXTENSION\" })"
